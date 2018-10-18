@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+	        http://www.springframework.org/schema/beans
+	        http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	        http://www.springframework.org/schema/aop
+	        http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+	        http://www.springframework.org/schema/tx 
+            http://www.springframework.org/schema/tx/spring-tx-3.1.xsd 
+            " default-lazy-init="true">
+
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="mapperLocations">
+            <list>
+                <value>classpath:com/sparrow/*/dao/mapper/*Mapper.xml</value>
+            </list>
+        </property>
+        <property name="configLocation" value="mybatis-config.xml"/>
+    </bean>
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.sparrow.*.dao"/>
+        <!--basePackage指定要扫描的包，可指定多个包，包与包之间用逗号或分号分隔-->
+        <!--<property name="basePackage" value="com.cyou.fz.*.*.dao,com.cyou.fz.*.*.*.dao,com.cyou.fz.*.*.*.*.dao"/>-->
+        <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+    </bean>
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--定义事物的通知类型，不能自己处理异常，否则事物失效 -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="delete*" propagation="REQUIRED" read-only="false"
+                       rollback-for="java.lang.Exception"/>
+            <tx:method name="insert*" propagation="REQUIRED" read-only="false"
+                       rollback-for="java.lang.Exception"/>
+            <tx:method name="update" propagation="REQUIRED" read-only="false" isolation="READ_COMMITTED"
+                       rollback-for="java.lang.Exception"/>
+            <tx:method name="*" read-only="false"/>
+        </tx:attributes>
+    </tx:advice>
+    <!--启用动态代理增强，非接口类也允许使用事物控制 -->
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+    <!-- aop事物处理切入路径配置 -->
+    <aop:config>
+        <aop:advisor pointcut="execution(* com.sparrow..service..*(..))" advice-ref="txAdvice"/>
+    </aop:config>
+</beans>

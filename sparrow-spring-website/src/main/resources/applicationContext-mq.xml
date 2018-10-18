@@ -1,0 +1,42 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                http://www.springframework.org/schema/beans/spring-beans.xsd
+                http://www.springframework.org/schema/rabbit
+                http://www.springframework.org/schema/rabbit/spring-rabbit-1.2.xsd">
+
+
+    <rabbit:connection-factory id="connectionFactory" host="${mq.server}" username="${mq.server.username}"
+                               password="${mq.server.pwd}"
+                               port="${mq.server.port}" virtual-host="${mq.server.vhost}"/>
+    <rabbit:admin connection-factory="connectionFactory" id="rabbitAdmin" auto-startup="true"/>
+    <!-- queue 队列声明 （只是声明，只有建立链接时才会创建）-->
+    <rabbit:queue id="test" durable="true" auto-delete="false" exclusive="false" name="test"/>
+
+    <!-- exchange queue binging key 绑定 -->
+    <rabbit:direct-exchange name="test-exchange" durable="true" auto-delete="false" id="test-exchange">
+        <rabbit:bindings>
+            <rabbit:binding queue="test" key="test"/>
+        </rabbit:bindings>
+    </rabbit:direct-exchange>
+
+    <rabbit:template id="amqpTemplate" connection-factory="connectionFactory" message-converter="jsonMessageConverter"/>
+    <!--queue litener  观察 监听模式 当有消息到达时会通知监听在对应的队列上的监听对象-->
+
+
+
+    <bean id="jsonMessageConverter" class="com.sparrow.rabbitmq.impl.GsonMessageConverter"/>
+    <!--与其定义位置有关-->
+    <bean id="publisher" class="com.sparrow.rabbitmq.impl.SpringRabbitMQPublisherImpl"/>
+    <bean id="rabbitListener" class="com.sparrow.rabbitmq.impl.SpringRabbitMQMessageListener">
+        <property name="messageConverter" ref="jsonMessageConverter"/>
+    </bean>
+    <rabbit:listener-container connection-factory="connectionFactory" acknowledge="auto">
+        <!--同时订阅多个Queue-->
+        <rabbit:listener queue-names="test,test2" ref="rabbitListener"/>
+    </rabbit:listener-container>
+
+    <!--<bean class="com.sparrow.mq.rabbit.handler.HelloHandler"/>-->
+    <!--<bean class="com.sparrow.mq.rabbit.handler.WorldHandler"/>-->
+</beans>

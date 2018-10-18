@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.sparrow</groupId>
+    <artifactId>open-source-integration</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0</version>
+    <properties>
+        <project.build.sourceEncoding>utf-8</project.build.sourceEncoding>
+        <maven.compile.encoding>utf-8</maven.compile.encoding>
+    </properties>
+    <modules>
+        <module>sparrow-spring-website</module>
+        <module>sparrow-spring</module>
+        <module>sparrow-spring-bom</module>
+        <module>dao-api</module>
+        <module>dao-sparrow</module>
+        <module>mybatis-mapper</module>
+        <module>sparrow-spring-api</module>
+        <module>sparrow-spring-provider</module>
+    </modules>
+</project>

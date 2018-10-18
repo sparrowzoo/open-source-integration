@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/context
+	   http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	   http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+">
+
+
+    <mvc:annotation-driven/>
+    <!--response body 中文乱码-->
+    <!--需要去掉<mvc:annotation-driven />标签
+    （该标签默认注册DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter），
+    把bean部分加入到<context:component-scan base-package="控制包名" />（spring扫描所有注解的类）前面，否则，控制器会失效。-->
+    <!--需要去掉<mvc:annotation-driven />标签（该标签默认注册DefaultAnnotationHandlerMapping和AnnotationMethodHandlerAdapter），把bean部分加入到<context:component-scan base-package="控制包名" />（spring扫描所有注解的类）前面，否则，控制器会失效。-->
+
+
+    <!-- 定义扫描根路径为com.sparrow.*.controller，不使用默认的扫描方式 注释优先于xml配置 -->
+    <!--com.sparrow.controller.* 会报错-->
+    <context:component-scan base-package="com.sparrow.controller"
+                            use-default-filters="false">
+        <!-- 扫描符合@Controller -->
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+    </context:component-scan>
+
+
+    <bean id="stringHttpMessageConverter"
+          class="org.springframework.http.converter.StringHttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>application/json;charset=UTF-8</value>
+                <value>text/html;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="voJsonMessageConverter"
+          class="com.sparrow.spring.mvc.VOJsonMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <bean class="org.springframework.http.MediaType">
+                    <constructor-arg index="0" value="application"/>
+                    <constructor-arg index="1" value="json"/>
+                    <constructor-arg index="2" value="UTF-8"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+    <bean id="voListJsonMessageConverter"
+          class="com.sparrow.spring.mvc.VOListJsonMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <bean class="org.springframework.http.MediaType">
+                    <constructor-arg index="0" value="application"/>
+                    <constructor-arg index="1" value="json"/>
+                    <constructor-arg index="2" value="UTF-8"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <!--<mvc:annotation-driven />自定义messageConverters-->
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <ref bean="voJsonMessageConverter" />
+            <ref bean="voListJsonMessageConverter" />
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <!--<bean-->
+        <!--class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">-->
+        <!--<property name="messageConverters">-->
+            <!--<list>-->
+                <!--<ref bean="voJsonMessageConverter"/>-->
+                <!--<ref bean="voListJsonMessageConverter"/>-->
+            <!--</list>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+
+    <bean class="com.sparrow.spring.mvc.BusinessHandlerExceptionResolver"/>
+
+    <!-- 对转向页面的路径解析。prefix：前缀， suffix：后缀 -->
+    <bean
+        class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/view/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <bean id="multipartResolver"
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!-- 延迟到controller类中 -->
+        <!-- @ExceptionHandler(Exception.class) public String handleException(Exception
+            ex, HttpServletRequest request) { if (ex instanceof org.springframework.web.multipart.MaxUploadSizeExceededException)
+            { request.setAttribute("error", "文件超过长度"); } return "/version/upload"; } -->
+        <!-- <property name="resolveLazily" value="true" /> -->
+        <!-- 指定所上传文件的总大小不能超过200KB。注意maxUploadSize属性的限制不是针对单个文件，而是所有文件的容量之和 -->
+        <property name="maxUploadSize" value="2000000000"/>
+    </bean>
+
+    <!-- SpringMVC在超出上传文件限制时，会抛出org.springframework.web.multipart.MaxUploadSizeExceededException -->
+    <!-- 该异常是SpringMVC在检查上传的文件信息时抛出来的，而且此时还没有进入到Controller方法中 -->
+    <bean id="exceptionResolver"
+          class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="org.springframework.web.multipart.MaxUploadSizeExceededException">maxlength</prop>
+            </props>
+        </property>
+    </bean>
+</beans>

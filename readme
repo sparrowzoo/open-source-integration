@@ -1,0 +1,15 @@
+@Value("${prperties_value}")
+    private String propertiesValue;
+
+
+
+    AnnotationMethodHandlerAdapter
+
+
+     protected ModelAndView invokeHandlerMethod(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+            AnnotationMethodHandlerAdapter.ServletHandlerMethodResolver methodResolver = this.getMethodResolver(handler);
+            Method handlerMethod = methodResolver.resolveHandlerMethod(request);
+            AnnotationMethodHandlerAdapter.ServletHandlerMethodInvoker methodInvoker = new AnnotationMethodHandlerAdapter.ServletHandlerMethodInvoker(methodResolver);
+
+
+

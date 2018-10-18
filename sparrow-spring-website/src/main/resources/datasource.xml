@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	    "
+       default-autowire="byName" default-lazy-init="false">
+
+
+
+    <!--<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"-->
+          <!--init-method="init" destroy-method="close">-->
+        <!--<property name="url" value="${url}"/>-->
+        <!--<property name="username" value="${user}"/>-->
+        <!--<property name="password" value="${password}"/>-->
+        <!--<property name="initialSize" value="${initialPoolSize}"/>-->
+        <!--<property name="maxActive" value="${maxActive}"/>-->
+        <!--<property name="breakAfterAcquireFailure" value="${breakAfterAcquireFailure}"/>-->
+        <!--<property name="filters" value="log4j"/>-->
+    <!--</bean>-->
+
+
+    <bean id="h2Datasource" class="org.h2.jdbcx.JdbcDataSource">
+        <property name="url" value="jdbc:h2:~/init-db"/>
+        <property name="user" value="sa"/>
+        <property name="password" value="123456"/>
+    </bean>
+    <bean id="h2ConnectionPool" class="org.h2.jdbcx.JdbcConnectionPool" destroy-method="dispose">
+        <constructor-arg ref="h2Datasource"/>
+    </bean>
+</beans>

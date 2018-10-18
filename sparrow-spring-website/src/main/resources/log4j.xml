@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
+<log4j:configuration>
+    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss} %5p %c:%L] %m%n"/>
+        </layout>
+    </appender>
+
+    <appender name="controller-info" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="/Users/harry/log/controller-info.log"/>
+        <param name="Append" value="false"/>
+        <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss} %5p %c:%L] %m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="INFO"/>
+        </filter>
+    </appender>
+
+    <appender name="controller-error" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="File" value="/Users/harry/log/controller-error.log"/>
+        <param name="Append" value="true"/>
+        <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss} %5p %c:%L] %m%n"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="LevelMin" value="ERROR" />
+            <param name="LevelMax" value="ERROR" />
+        </filter>
+    </appender>
+    <appender name="database" class="org.apache.log4j.jdbc.JDBCAppender">
+        <param name="Threshold" value="error"/>
+        <param name="URL" value="jdbc:mysql://localhost:3306/test"/>
+        <param name="driver" value="com.mysql.jdbc.Driver"/>
+        <param name="user" value="dev"/>
+        <param name="password" value="guan"/>
+        <param name="sql" value="INSERT INTO LOG4J (Message) VALUES('[%d{yyyy-MM-dd HH:mm:ss} %5p %c:%L] %m')"/>
+        <param name="To" value="zh_harry@163.com"/>
+        <param name="SMTPDebug" value="true"/>
+    </appender>
+    <!-- ===================================================================== -->
+    <!--  logger的定义                                                         -->
+    <!-- ===================================================================== -->
+
+    <logger name="com.sparrow.controller" >
+        <level value="info"/>
+        <appender-ref ref="controller-info"/>
+        <appender-ref ref="controller-info"/>
+        <appender-ref ref="database"/>
+    </logger>
+
+
+
+    <!-- ===================================================================== -->
+    <!--  Root logger的定义                                                         -->
+    <!-- ===================================================================== -->
+    <root>
+        <level value="debug"/>
+        <appender-ref ref="console"/>
+        <appender-ref ref="logFile"/>
+    </root>
+</log4j:configuration>
