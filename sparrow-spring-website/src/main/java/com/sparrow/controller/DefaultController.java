@@ -4,12 +4,11 @@ import com.sparrow.constant.SPARROW_ERROR;
 import com.sparrow.exception.Asserts;
 import com.sparrow.exception.BusinessException;
 import com.sparrow.support.protocol.Result;
-import com.sparrow.support.protocol.pager.PagerResult;
 import com.sparrow.support.protocol.pager.PagerSearch;
+import com.sparrow.support.protocol.pager.SimplePagerResult;
 import com.sparrow.vo.HelloVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -76,14 +75,14 @@ public class DefaultController {
 
     @ResponseBody
     @RequestMapping("/hello-page-list")
-    public PagerResult<HelloVO> helloPageList(PagerSearch pagerSearch) throws BusinessException {
+    public SimplePagerResult<HelloVO> helloPageList(PagerSearch pagerSearch) throws BusinessException {
         List<HelloVO> list = new ArrayList<HelloVO>();
         list.add(new HelloVO("hello", "zhangsn", "20"));
         list.add(new HelloVO("world", "lisi", "34"));
         pagerSearch.setCurrentPageIndex(2);
         pagerSearch.setPageSize(20);
 
-        PagerResult<HelloVO> pagerResult = new PagerResult<HelloVO>(pagerSearch, 100L);
+        SimplePagerResult<HelloVO> pagerResult = new SimplePagerResult<HelloVO>(pagerSearch.getCurrentPageIndex(),pagerSearch.getPageSize());
         pagerResult.setList(list);
         return pagerResult;
     }
