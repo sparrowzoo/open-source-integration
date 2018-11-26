@@ -72,11 +72,11 @@ debug:
 
     <!--com.log.console即为类的全路径 -->
     <!--additivity表示上级传递-->
-    <logger name="com.log.console" additivity="true">
+    <logger name="com.sparrow.log.console" additivity="true">
         <appender-ref ref="STDOUT"/>
     </logger>
 
-    <logger name="com.log.file" level="DEBUG" additivity="false">
+    <logger name="com.sparrow.log.file" level="DEBUG" additivity="false">
         <appender-ref ref="FILE"/>
     </logger>
 
