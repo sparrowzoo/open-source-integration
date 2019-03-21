@@ -1,6 +1,6 @@
 package com.sparrow.spring.api.impl;
 
-import com.sparrow.exception.BusinessException;
+import com.sparrow.protocol.BusinessException;
 import com.sparrow.spring.api.HelloService;
 import com.sparrow.spring.dto.HelloDTO;
 import com.sparrow.spring.query.HelloQuery;

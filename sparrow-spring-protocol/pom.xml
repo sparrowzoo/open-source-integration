@@ -9,7 +9,13 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>sparrow-spring-dto</artifactId>
+    <artifactId>sparrow-spring-protocol</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.sparrow</groupId>
+            <artifactId>sparrow-protocol</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>

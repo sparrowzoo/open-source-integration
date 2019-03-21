@@ -22,6 +22,6 @@
         <module>sparrow-spring-api</module>
         <module>sparrow-spring-provider</module>
         <module>sparrow-spring-manager</module>
-        <module>sparrow-spring-dto</module>
+        <module>sparrow-spring-protocol</module>
     </modules>
 </project>

@@ -1,10 +1,7 @@
 package com.sparrow.controller;
 
-import com.sparrow.exception.BusinessException;
-import com.sparrow.support.protocol.Result;
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.sql.Statement;
+import com.sparrow.protocol.BusinessException;
+import com.sparrow.protocol.Result;
 import org.h2.jdbcx.JdbcConnectionPool;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,6 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  * Created by harry on 2017/9/5.
@@ -28,18 +29,17 @@ public class H2Controller {
     @RequestMapping("/hello-h2")
     public Result helloH2() throws BusinessException {
         logger.error("sparing error");
-        Connection connection=null;
+        Connection connection = null;
         try {
-            connection= jdbcConnectionPool.getConnection();
+            connection = jdbcConnectionPool.getConnection();
             Statement statement = connection.createStatement();
             statement.execute("INSERT INTO TEST VALUES(3, 'World');");
             connection.commit();
         } catch (SQLException e) {
             e.printStackTrace();
-        }
-        finally {
+        } finally {
             try {
-                if(connection!=null) {
+                if (connection != null) {
                     connection.close();
                 }
             } catch (SQLException e) {

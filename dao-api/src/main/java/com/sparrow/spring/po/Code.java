@@ -4,7 +4,7 @@ import com.sparrow.constant.magic.SYMBOL;
 import com.sparrow.core.spi.JsonFactory;
 import com.sparrow.enums.STATUS_RECORD;
 import com.sparrow.orm.Namespace;
-import com.sparrow.support.Entity;
+import com.sparrow.protocol.Entity;
 
 import javax.persistence.*;
 
@@ -65,7 +65,7 @@ public class Code implements Entity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "uuid")
-    @Column(name = "uuid", columnDefinition = "varchar(40)",nullable = false)
+    @Column(name = "uuid", columnDefinition = "varchar(40)", nullable = false)
     public String getUuid() {
         return uuid;
     }
@@ -74,7 +74,7 @@ public class Code implements Entity {
         this.uuid = uuid;
     }
 
-    @Column(name = "name",columnDefinition = "varchar(100) DEFAULT ''",nullable = false)
+    @Column(name = "name", columnDefinition = "varchar(100) DEFAULT ''", nullable = false)
     public String getName() {
         return name;
     }
@@ -83,7 +83,7 @@ public class Code implements Entity {
         this.name = name;
     }
 
-    @Column(name = "parent_uuid",columnDefinition = "varchar(40) DEFAULT ''",nullable = false)
+    @Column(name = "parent_uuid", columnDefinition = "varchar(40) DEFAULT ''", nullable = false)
     public String getParentUuid() {
         return parentUuid;
     }
@@ -92,7 +92,7 @@ public class Code implements Entity {
         this.parentUuid = parentUuid;
     }
 
-    @Column(name = "code",columnDefinition = "varchar(40) DEFAULT ''", unique = true,nullable = false)
+    @Column(name = "code", columnDefinition = "varchar(40) DEFAULT ''", unique = true, nullable = false)
     public String getCode() {
         return code;
     }
@@ -101,7 +101,7 @@ public class Code implements Entity {
         this.code = code;
     }
 
-    @Column(name = "value",columnDefinition = "varchar(40) DEFAULT ''")
+    @Column(name = "value", columnDefinition = "varchar(40) DEFAULT ''")
     public String getValue() {
         return value;
     }
@@ -110,7 +110,7 @@ public class Code implements Entity {
         this.value = value;
     }
 
-    @Column(name = "status",columnDefinition = "TINYINT(1) DEFAULT 0")
+    @Column(name = "status", columnDefinition = "TINYINT(1) DEFAULT 0")
     public STATUS_RECORD getStatus() {
         return status;
     }
@@ -119,7 +119,7 @@ public class Code implements Entity {
         this.status = status;
     }
 
-    @Column(name = "remark",columnDefinition = "TEXT")
+    @Column(name = "remark", columnDefinition = "TEXT")
     public String getRemark() {
         return remark;
     }
@@ -133,7 +133,7 @@ public class Code implements Entity {
         return JsonFactory.getProvider().toString(this);
     }
 
-    @Column(name = "order_no",columnDefinition = "INT(11) DEFAULT 0",nullable = false)
+    @Column(name = "order_no", columnDefinition = "INT(11) DEFAULT 0", nullable = false)
     public Integer getOrderNo() {
         return orderNo;
     }

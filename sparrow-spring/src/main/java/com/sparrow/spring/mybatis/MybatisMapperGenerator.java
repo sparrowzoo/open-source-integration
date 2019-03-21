@@ -3,7 +3,6 @@ package com.sparrow.spring.mybatis;
 import com.sparrow.container.ClassFactoryBean;
 import com.sparrow.orm.EntityManager;
 import com.sparrow.orm.EntityManagerFactoryBean;
-import com.sparrow.support.Entity;
 import com.sparrow.support.EnvironmentSupport;
 import com.sparrow.utility.FileUtility;
 import org.springframework.beans.BeansException;

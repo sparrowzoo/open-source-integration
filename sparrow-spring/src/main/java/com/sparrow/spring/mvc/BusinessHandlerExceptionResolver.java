@@ -1,10 +1,8 @@
 package com.sparrow.spring.mvc;
 
 import com.alibaba.fastjson.JSON;
-import com.sparrow.exception.BusinessException;
-import com.sparrow.support.protocol.Result;
-import com.sparrow.utility.Config;
-import com.sparrow.utility.StringUtility;
+import com.sparrow.protocol.BusinessException;
+import com.sparrow.protocol.Result;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
 

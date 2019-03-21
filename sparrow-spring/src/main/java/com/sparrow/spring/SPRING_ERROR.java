@@ -1,7 +1,7 @@
 package com.sparrow.spring;
 
+import com.sparrow.protocol.ModuleSupport;
 import com.sparrow.support.AbstractErrorSupport;
-import com.sparrow.support.ModuleSupport;
 
 /**
  * Created by harry on 2017/6/27.

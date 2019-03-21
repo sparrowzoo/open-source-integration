@@ -1,8 +1,8 @@
 package com.sparrow.spring.mvc;
 
 import com.google.gson.Gson;
-import com.sparrow.support.protocol.Result;
-import com.sparrow.support.protocol.VO;
+import com.sparrow.protocol.Result;
+import com.sparrow.protocol.VO;
 import org.springframework.http.HttpInputMessage;
 import org.springframework.http.HttpOutputMessage;
 import org.springframework.http.MediaType;
