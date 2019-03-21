@@ -15,6 +15,10 @@
             <groupId>com.sparrow</groupId>
             <artifactId>sparrow</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.sparrow</groupId>
+            <artifactId>sparrow-spring-dto</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

@@ -9,19 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>sparrow-spring-provider</artifactId>
+    <artifactId>sparrow-spring-dto</artifactId>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.sparrow</groupId>
-            <artifactId>sparrow-spring-api</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sparrow</groupId>
-            <artifactId>sparrow-spring-manager</artifactId>
-            <version>1.0</version>
-        </dependency>
-    </dependencies>
 
 </project>
