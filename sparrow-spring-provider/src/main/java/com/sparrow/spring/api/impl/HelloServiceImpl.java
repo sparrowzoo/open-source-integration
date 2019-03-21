@@ -1,12 +1,13 @@
 package com.sparrow.spring.api.impl;
 
-import com.sparrow.constant.SPARROW_ERROR;
 import com.sparrow.exception.BusinessException;
 import com.sparrow.spring.api.HelloService;
+import com.sparrow.spring.dto.HelloDTO;
 
 public class HelloServiceImpl implements HelloService {
-    public void sayHello() throws BusinessException {
-        System.out.println("hello world");
-        throw new BusinessException(SPARROW_ERROR.SYSTEM_SERVER_ERROR);
+    public HelloDTO sayHello() throws BusinessException {
+       return new HelloDTO();
+        //System.out.println("hello world");
+        //throw new BusinessException(SPARROW_ERROR.SYSTEM_SERVER_ERROR);
     }
 }

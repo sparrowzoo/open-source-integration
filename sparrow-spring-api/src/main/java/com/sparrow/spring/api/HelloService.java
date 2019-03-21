@@ -1,7 +1,8 @@
 package com.sparrow.spring.api;
 
 import com.sparrow.exception.BusinessException;
+import com.sparrow.spring.dto.HelloDTO;
 
 public interface HelloService {
-    void sayHello() throws BusinessException;
+    HelloDTO sayHello() throws BusinessException;
 }
