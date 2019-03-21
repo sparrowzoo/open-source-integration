@@ -79,8 +79,6 @@ public class DefaultController {
         List<HelloVO> list = new ArrayList<HelloVO>();
         list.add(new HelloVO("hello", "zhangsn", "20"));
         list.add(new HelloVO("world", "lisi", "34"));
-        pagerSearch.setCurrentPageIndex(2);
-        pagerSearch.setPageSize(20);
 
         SimplePagerResult<HelloVO> pagerResult = new SimplePagerResult<HelloVO>(pagerSearch.getCurrentPageIndex(),pagerSearch.getPageSize());
         pagerResult.setList(list);

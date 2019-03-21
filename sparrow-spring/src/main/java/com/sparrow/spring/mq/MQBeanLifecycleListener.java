@@ -1,7 +1,7 @@
 package com.sparrow.spring.mq;
 
+import com.sparrow.mq.EventHandlerMappingContainer;
 import com.sparrow.mq.MQHandler;
-import com.sparrow.mq.QueueHandlerMappingContainer;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanPostProcessor;
@@ -11,7 +11,7 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
  */
 public class MQBeanLifecycleListener implements BeanPostProcessor {
     @Autowired
-    private QueueHandlerMappingContainer container;
+    private EventHandlerMappingContainer container;
 
 
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
