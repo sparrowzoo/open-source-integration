@@ -1,7 +1,7 @@
 package com.sparrow.spring.dto;
 
 /**
- * @author: zhanglizhi@kanzhun.com
+ * @author: zh_harry@163.com
  * @date: 2019-03-21 15:52
  * @description:
  */
