@@ -18,7 +18,7 @@
         </dependency>
         <dependency>
             <groupId>com.sparrow</groupId>
-            <artifactId>sparrow-spring-dto</artifactId>
+            <artifactId>sparrow-spring-protocol</artifactId>
             <version>1.0</version>
         </dependency>
     </dependencies>

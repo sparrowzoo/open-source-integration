@@ -11,5 +11,11 @@
 
     <artifactId>sparrow-spring-client</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>com.sparrow</groupId>
+            <artifactId>sparrow-spring-api</artifactId>
+            <version>1.0</version>
+        </dependency>
+    </dependencies>
 </project>
