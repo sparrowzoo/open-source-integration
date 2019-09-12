@@ -1,10 +1,10 @@
 package com.sparrow.spring.po;
 
-import com.sparrow.constant.magic.SYMBOL;
 import com.sparrow.core.spi.JsonFactory;
-import com.sparrow.enums.STATUS_RECORD;
 import com.sparrow.orm.Namespace;
-import com.sparrow.protocol.Entity;
+import com.sparrow.protocol.POJO;
+import com.sparrow.protocol.constant.magic.SYMBOL;
+import com.sparrow.protocol.enums.STATUS_RECORD;
 
 import javax.persistence.*;
 
@@ -20,7 +20,7 @@ import javax.persistence.*;
 )
 //可以省略，默认取po的同级dao 包,接口名为po加DAO后缀
 @Namespace("com.sparrow.spring.dao.CodeDAO")
-public class Code implements Entity {
+public class Code implements POJO {
     private String uuid;
     private String name;
     private String parentUuid;

@@ -5,7 +5,7 @@ import com.sparrow.exception.Asserts;
 import com.sparrow.protocol.BusinessException;
 import com.sparrow.protocol.Result;
 import com.sparrow.protocol.pager.PagerQuery;
-import com.sparrow.protocol.pager.SimplePagerResult;
+import com.sparrow.protocol.pager.PagerResult;
 import com.sparrow.vo.HelloVO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -75,12 +75,12 @@ public class DefaultController {
 
     @ResponseBody
     @RequestMapping("/hello-page-list")
-    public SimplePagerResult<HelloVO> helloPageList(PagerQuery pagerSearch) throws BusinessException {
+    public PagerResult<HelloVO> helloPageList(PagerQuery pagerSearch) throws BusinessException {
         List<HelloVO> list = new ArrayList<HelloVO>();
         list.add(new HelloVO("hello", "zhangsn", "20"));
         list.add(new HelloVO("world", "lisi", "34"));
 
-        SimplePagerResult<HelloVO> pagerResult = new SimplePagerResult<HelloVO>(pagerSearch.getCurrentPageIndex(),pagerSearch.getPageSize());
+        PagerResult<HelloVO> pagerResult = new PagerResult<HelloVO>(pagerSearch.getCurrentPageIndex(),pagerSearch.getPageSize());
         pagerResult.setList(list);
         return pagerResult;
     }

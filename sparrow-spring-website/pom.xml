@@ -16,14 +16,14 @@
     <dependencies>
 
 
-        <!--<dependency>-->
-            <!--<groupId>com.sparrow</groupId>-->
-            <!--<artifactId>sparrow-spring</artifactId>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>org.aspectj</groupId>-->
-        <!--<artifactId>aspectjweaver</artifactId>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>com.sparrow</groupId>
+            <artifactId>sparrow-spring</artifactId>
+        </dependency>
+        <dependency>
+        <groupId>org.aspectj</groupId>
+        <artifactId>aspectjweaver</artifactId>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/com.h2database/h2 -->
         <dependency>
             <groupId>com.h2database</groupId>
@@ -46,17 +46,12 @@
             <version>1.2.17</version>
         </dependency>
 
-        <!--为logback 重现logback 日志冲突报错-->
-        <!--<dependency>-->
-        <!--<groupId>org.apache.logging.log4j</groupId>-->
-        <!--<artifactId>log4j-slf4j-impl</artifactId>-->
-        <!--<version>2.11.0</version>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>com.sparrow</groupId>-->
-        <!--<artifactId>sparrow-spring-manager</artifactId>-->
-        <!--<version>1.0</version>-->
-        <!--</dependency>-->
+
+        <dependency>
+            <groupId>com.sparrow</groupId>
+            <artifactId>sparrow-spring-manager</artifactId>
+            <version>1.0</version>
+        </dependency>
         <dependency>
             <groupId>com.sparrow</groupId>
             <artifactId>sparrow-spring-provider</artifactId>
