@@ -24,5 +24,6 @@
         <module>sparrow-spring-manager</module>
         <module>sparrow-spring-protocol</module>
         <module>sparrow-spring-client</module>
+        <module>sparrow-spring-boot</module>
     </modules>
 </project>
