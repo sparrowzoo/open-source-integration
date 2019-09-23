@@ -11,11 +11,6 @@ import org.springframework.web.client.RestTemplate;
 
 @Component
 public class HystrixService {
-    @HystrixCommand(commandKey = "testHystrix", groupKey = "hystrixGroup",fallbackMethod = "timeOutFallBack",ignoreExceptions = {Exception.class},
-            commandProperties = {
-                    @HystrixProperty(name = "execution.isolation.strategy",value = "THREAD"),
-                    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "1000" )
-            })
     public String testHystrix(String id) {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
@@ -24,10 +19,9 @@ public class HystrixService {
 
         HttpEntity<String> requestEntity = new HttpEntity<>("", headers);
         ResponseEntity<String> exchange = restTemplate.exchange("http://localhost:9100/hystrix_anther_sleep", HttpMethod.GET, requestEntity,String.class);
+        System.out.println("hello thread "+Thread.currentThread().getName());
         return exchange.getBody();
     }
 
-    public String timeOutFallBack(String id){
-        return "sorry, the request is timeout";
-    }
+
 }
