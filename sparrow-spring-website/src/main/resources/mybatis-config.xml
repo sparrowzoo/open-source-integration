@@ -42,6 +42,11 @@
         <mapper resource="com/sparrow/spring/dao/criteria.xml"/>
     </mappers>
     <typeHandlers>
-        <typeHandler javaType="com.sparrow.enums.STATUS_RECORD" jdbcType="TINYINT" handler="com.sparrow.spring.mybatis.RecordStateTypeHandler"/>
+        <typeHandler javaType="com.sparrow.enums.STATUS_RECORD" jdbcType="TINYINT"
+                     handler="com.sparrow.spring.mybatis.RecordStateTypeHandler"/>
     </typeHandlers>
+    <plugins>
+        <!-- SQL性能拦截器 -->
+        <plugin interceptor="com.sparrow.spring.mybatis.PerformanceInterceptor"/>
+    </plugins>
 </configuration>

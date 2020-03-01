@@ -15,7 +15,7 @@ import reactor.core.publisher.Mono;
 import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
 
-import static io.github.resilience4j.bulkhead.annotation.Bulkhead.*;
+import static io.github.resilience4j.bulkhead.annotation.Bulkhead.Type;
 
 /**
  * This Connector shows how to use the CircuitBreaker annotation.
@@ -40,7 +40,7 @@ public class BackendAConnector implements Connector {
     @Bulkhead(name = "backendA")
     public String success() {
         try {
-            Thread.sleep(3000L);
+            Thread.sleep(1000L);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

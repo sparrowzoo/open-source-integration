@@ -3,6 +3,7 @@ package com.sparrow.spring.robwin.controller;
 import com.sparrow.spring.robwin.service.BusinessService;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
@@ -25,7 +26,8 @@ public class BackendAController {
         return businessAService.failure();
     }
 
-    @GetMapping("success")
+    //@GetMapping("success")
+    @PostMapping("success")
     public String success(){
         return businessAService.success();
     }
