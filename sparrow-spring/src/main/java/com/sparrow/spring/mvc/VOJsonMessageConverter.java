@@ -41,7 +41,6 @@ public class VOJsonMessageConverter extends AbstractHttpMessageConverter<VO> {
             outputMessage.getBody().write(gson.toJson(result).getBytes());
             return;
         }
-
         outputMessage.getBody().write(gson.toJson(voResult).getBytes());
     }
 }

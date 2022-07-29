@@ -24,9 +24,9 @@ public class BusinessHandlerExceptionResolver extends SimpleMappingExceptionReso
             PrintWriter writer = response.getWriter();
             if (ex instanceof BusinessException) {
                 BusinessException businessException = (BusinessException) ex;
-                error = Result.FAIL(businessException);
+                error = Result.fail(businessException);
             } else {
-                error = Result.FAIL();
+                error = Result.fail();
             }
             writer.write(JSON.toJSONString(error));
             writer.flush();

@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.event.ContextClosedEvent;
 import org.springframework.context.event.ContextRefreshedEvent;
 
@@ -16,6 +17,7 @@ import org.springframework.context.event.ContextRefreshedEvent;
 @SpringBootApplication
 @EnableCircuitBreaker
 @EnableHystrix
+@ImportResource("classpath:datasource.xml")
 public class Application {
     private static Logger log = LoggerFactory.getLogger(Application.class);
 

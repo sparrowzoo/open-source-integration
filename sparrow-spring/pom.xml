@@ -29,10 +29,6 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.logback-extensions</groupId>
-            <artifactId>logback-ext-spring</artifactId>
-        </dependency>
         <!--为logback 重现logback 日志冲突报错-->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
@@ -113,6 +109,16 @@
             <artifactId>sparrow-mvc</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.sparrow</groupId>
+            <artifactId>sparrow-orm</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>2.9.0</version>
+        </dependency>
 
         <dependency>
             <groupId>com.alibaba</groupId>
@@ -139,6 +145,11 @@
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
         </dependency>
     </dependencies>
     <build>

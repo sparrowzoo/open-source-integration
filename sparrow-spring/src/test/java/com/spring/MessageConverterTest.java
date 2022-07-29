@@ -1,8 +1,8 @@
 package com.spring;
 
+import com.sparrow.protocol.VO;
 import com.sparrow.spring.mvc.VOJsonMessageConverter;
 import com.sparrow.spring.mvc.VOListJsonMessageConverter;
-import com.sparrow.support.protocol.VO;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,11 +11,11 @@ import java.util.List;
  */
 public class MessageConverterTest {
     public static void main(String[] args) {
-        VOJsonMessageConverter messageConverter=new VOJsonMessageConverter();
+        VOJsonMessageConverter messageConverter = new VOJsonMessageConverter();
         System.out.println(messageConverter.supports(VO.class));
 
-        List<VO> baseVOS=new ArrayList<VO>();
-        VOListJsonMessageConverter jsonMessageConverter=new VOListJsonMessageConverter();
+        List<VO> baseVOS = new ArrayList<VO>();
+        VOListJsonMessageConverter jsonMessageConverter = new VOListJsonMessageConverter();
 
         System.out.println(jsonMessageConverter.supports(baseVOS.getClass()));
     }

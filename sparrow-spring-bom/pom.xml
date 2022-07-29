@@ -11,22 +11,23 @@
     <artifactId>sparrow-spring-bom</artifactId>
     <packaging>pom</packaging>
     <properties>
-        <spring.framework.version>5.1.0.BUILD-SNAPSHOT</spring.framework.version>
-        <commons-lang3.version>3.9-SNAPSHOT</commons-lang3.version>
+        <spring.framework.version>5.1.0.RELEASE</spring.framework.version>
+        <commons-lang3.version>3.8-RELEASE</commons-lang3.version>
         <jackson.version>2.10.0.pr1</jackson.version>
-        <logback.version>1.2.4-SNAPSHOT</logback.version>
-        <commons.file.upload.version>1.4-SNAPSHOT</commons.file.upload.version>
-        <commons-codec.version>1.12-SNAPSHOT</commons-codec.version>
-        <mybatis.version>3.5.0-SNAPSHOT</mybatis.version>
-        <mybatis.spring.version>2.0.0-SNAPSHOT</mybatis.spring.version>
-        <commons-io.version>2.7-SNAPSHOT</commons-io.version>
-        <jedis.version>3.0.0-SNAPSHOT</jedis.version>
+        <logback.version>1.2.9</logback.version>
+        <commons.file.upload.version>1.4</commons.file.upload.version>
+        <commons-codec.version>1.12-RELEASE</commons-codec.version>
+        <mybatis.version>3.5.0-RELEASE</mybatis.version>
+        <mybatis.spring.version>2.0.0</mybatis.spring.version>
+        <commons-io.version>2.7</commons-io.version>
+        <jedis.version>3.0.0</jedis.version>
         <alibaba.druid.version>1.1.7</alibaba.druid.version>
-        <fast-json.version>1.2.46-SNAPSHOT</fast-json.version>
-        <logback.spring.version>0.1.6-SNAPSHOT</logback.spring.version>
+        <fast-json.version>1.2.83</fast-json.version>
+
+<!--     <logback.spring.version>0.1.6</logback.spring.version>-->
         <aspectj.version>1.6.2</aspectj.version>
         <sparrow.spring.version>1.0-SNAPSHOT</sparrow.spring.version>
-        <mybatis.version>3.5.0-SNAPSHOT</mybatis.version>
+        <mybatis.version>3.5.0</mybatis.version>
     </properties>
     <repositories>
         <repository>

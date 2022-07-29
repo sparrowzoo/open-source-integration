@@ -1,35 +1,32 @@
 package com.sparrow.spring.mybatis;
 
 import com.sparrow.orm.type.TypeHandler;
-import com.sparrow.protocol.enums.STATUS_RECORD;
-import org.apache.ibatis.type.JdbcType;
-
+import com.sparrow.protocol.enums.StatusRecord;
 import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class RecordStateTypeHandler implements TypeHandler<STATUS_RECORD> {
+public class RecordStateTypeHandler implements TypeHandler<StatusRecord> {
 
     @Override
-    public void setParameter(PreparedStatement ps, int i, STATUS_RECORD parameter) throws SQLException {
+    public void setParameter(PreparedStatement ps, int i, StatusRecord parameter) throws SQLException {
         ps.setInt(i, parameter.ordinal());
     }
 
     @Override
-    public STATUS_RECORD getResult(ResultSet rs, String arg) throws SQLException {
-        return STATUS_RECORD.values()[rs.getInt(arg)];
+    public StatusRecord getResult(ResultSet rs, String arg) throws SQLException {
+        return StatusRecord.values()[rs.getInt(arg)];
     }
 
     @Override
-    public STATUS_RECORD getResult(ResultSet rs, int arg) throws SQLException {
-        return STATUS_RECORD.values()[rs.getInt(arg)];
+    public StatusRecord getResult(ResultSet rs, int arg) throws SQLException {
+        return StatusRecord.values()[rs.getInt(arg)];
     }
 
     @Override
-    public STATUS_RECORD getResult(CallableStatement cs, int arg) throws SQLException {
-        return STATUS_RECORD.values()[cs.getInt(arg)];
+    public StatusRecord getResult(CallableStatement cs, int arg) throws SQLException {
+        return StatusRecord.values()[cs.getInt(arg)];
     }
-
 
 }
