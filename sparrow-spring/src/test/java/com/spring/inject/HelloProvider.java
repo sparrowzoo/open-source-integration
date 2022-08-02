@@ -6,9 +6,10 @@ import javax.inject.Named;
 @Named
 public class HelloProvider {
     @Inject
-    private HelloApi helloTest;
+    @Named("hello2Test")
+    private HelloApi helloApi;
 
     public HelloApi getHelloTest() {
-        return helloTest;
+        return helloApi;
     }
 }

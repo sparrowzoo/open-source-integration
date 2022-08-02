@@ -4,6 +4,7 @@ import com.sparrow.protocol.BusinessException;
 import com.sparrow.spring.api.HelloService;
 import com.sparrow.spring.dto.HelloDTO;
 import com.sparrow.spring.query.HelloQuery;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class HelloServiceImpl implements HelloService {
     public HelloDTO sayHello(HelloQuery query) throws BusinessException {
