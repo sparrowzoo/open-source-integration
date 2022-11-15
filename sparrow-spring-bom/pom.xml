@@ -13,7 +13,7 @@
     <properties>
         <spring.framework.version>5.1.0.RELEASE</spring.framework.version>
         <commons-lang3.version>3.8-RELEASE</commons-lang3.version>
-        <jackson.version>2.10.0.pr1</jackson.version>
+        <jackson.version>2.12.7.1</jackson.version>
         <logback.version>1.2.9</logback.version>
         <commons.file.upload.version>1.4</commons.file.upload.version>
         <commons-codec.version>1.12-RELEASE</commons-codec.version>
