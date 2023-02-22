@@ -15,7 +15,7 @@
         <commons-lang3.version>3.8-RELEASE</commons-lang3.version>
         <jackson.version>2.10.0.pr1</jackson.version>
         <logback.version>1.2.9</logback.version>
-        <commons.file.upload.version>1.4</commons.file.upload.version>
+        <commons.file.upload.version>1.5</commons.file.upload.version>
         <commons-codec.version>1.12-RELEASE</commons-codec.version>
         <mybatis.version>3.5.0-RELEASE</mybatis.version>
         <mybatis.spring.version>2.0.0</mybatis.spring.version>
